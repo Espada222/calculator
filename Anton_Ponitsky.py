@@ -1,35 +1,37 @@
-print("Выберите операцию:")
+def calculator():
+    running = True
 
-while True:
-    choice = input("Введите какую операцию хотите выполнить (+/-/*//): ")
+    while running:
+        try:
+            a = float(input("Введите первое число: "))
+            b = float(input("Введите второе число: "))
 
-    if choice in ['+', '-', '*', '/']:
-        num1 = float(input("Введите первое число: "))
-        num2 = float(input("Введите второе число: "))
+            operation = input("Выберите операцию (+, -, *, /) или 'exit' для выхода: ")
 
-        if choice == '+':
-            result = num1 + num2
-            print(f"{num1} + {num2} = {result}")
-        elif choice == '-':
-            result = num1 - num2
-            print(f"{num1} - {num2} = {result}")
-        elif choice == '*':
-            result = num1 * num2
-            print(f"{num1} * {num2} = {result}")
-        elif choice == '/':
-            if num2 != 0:
-                result = num1 / num2
-                print(f"{num1} / {num2} = {result}")
+            if operation == '+':
+                result = a + b
+            elif operation == '-':
+                result = a - b
+            elif operation == '*':
+                result = a * b
+            elif operation == '/':
+                if b == 0:
+                    print("Ошибка: Деление на ноль.")
+                    continue
+                result = a / b
+            elif operation == 'exit':
+                running = False
+                continue
             else:
-                print("Ошибка! Деление на ноль.")
+                print("Некорректная операция. Попробуйте снова.")
+                continue
 
-        next_calculation = input("Хотите выполнить еще один расчет? (да/нет): ")
-        if next_calculation.lower() != 'да':
-            break
-    else:
-        print("Некорректный ввод. Пожалуйста, выберите операцию снова.")
-try:
-    result = num1 / num2
-except ZeroDivisionError:
-    result = "Деление на ноль запрещено"
-    input()
+            print(f"Результат: {result}")
+
+        except ValueError:
+            print("Ошибка: Пожалуйста, вводите только числа.")
+
+    print("Калькулятор завершен.")
+
+
+calculator()

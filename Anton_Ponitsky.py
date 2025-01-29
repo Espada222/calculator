@@ -15,10 +15,12 @@ def calculator():
             elif operation == '*':
                 result = a * b
             elif operation == '/':
-                if b == 0:
-                    print("Ошибка: Деление на ноль.")
-                    continue
-                result = a / b
+
+                try:
+                    result = a / b
+                except ZeroDivisionError:
+                    result = "Деление на ноль запрещено"
+
             elif operation == 'exit':
                 running = False
                 continue

@@ -15,12 +15,7 @@ def calculator():
             elif operation == '*':
                 result = a * b
             elif operation == '/':
-
-                try:
-                    result = a / b
-                except ZeroDivisionError:
-                    result = "Деление на ноль запрещено"
-
+                result = a / b
             elif operation == 'exit':
                 running = False
                 continue
@@ -30,10 +25,13 @@ def calculator():
 
             print(f"Результат: {result}")
 
+        except ZeroDivisionError:
+            print("Деление на ноль запрещено.")
         except ValueError:
             print("Ошибка: Пожалуйста, вводите только числа.")
 
     print("Калькулятор завершен.")
 
+calculator()
 
 calculator()

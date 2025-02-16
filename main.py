@@ -5,7 +5,7 @@ def max_number(a, b):
         return b
 
 
-def test1():
+def test_max_number():
     assert max_number(10, 9) == 10
     assert max_number(5, 10) == 10
     assert max_number(5, 5) == 5
@@ -15,7 +15,7 @@ def test1():
     print("Тесты пройдены")
 
 
-test1()
+test_max_number()
 
 result1 = max_number(2, 1)
 
